@@ -8,12 +8,19 @@ module Enumerable
     arr
   end
 
-  def my_select(&block)
+  def my_select
     arr = []
     my_each do |element|
-      arr << element if block.call(element)
+      arr << element if yield(element)
     end
     arr
+  end
+
+  def my_all?
+    my_each do |element|
+      return false unless yield(element)
+    end
+    true
   end
 end
 
