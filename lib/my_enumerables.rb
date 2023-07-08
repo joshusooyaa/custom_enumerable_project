@@ -1,5 +1,13 @@
 module Enumerable
   # Your code goes here
+  def my_each_with_index
+    arr = Array.new(self)
+    (0...length).each do |index|
+      yield(self[index], index)
+    end
+    arr
+  end
+
 end
 
 # You will first have to define my_each
@@ -8,9 +16,8 @@ end
 # to this method
 class Array
   def my_each
-    array = []
+    array = Array.new(self)
     (0...length).each do |index|
-      array << self[index]
       yield(self[index])
     end
     array
