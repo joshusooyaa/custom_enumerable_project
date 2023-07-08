@@ -8,6 +8,13 @@ module Enumerable
     arr
   end
 
+  def my_select(&block)
+    arr = []
+    my_each do |element|
+      arr << element if block.call(element)
+    end
+    arr
+  end
 end
 
 # You will first have to define my_each
