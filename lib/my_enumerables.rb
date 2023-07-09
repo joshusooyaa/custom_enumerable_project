@@ -1,32 +1,25 @@
 module Enumerable
   # Your code goes here
+
   def my_each_with_index
     arr = Array.new(self)
-    (0...length).each do |index|
-      yield(self[index], index)
-    end
+    (0...length).each { |index| yield(self[index], index) }
     arr
   end
 
   def my_select
     arr = []
-    my_each do |element|
-      arr << element if yield(element)
-    end
+    my_each { |element| arr << element if yield(element) }
     arr
   end
 
   def my_all?
-    my_each do |element|
-      return false unless yield(element)
-    end
+    my_each { |element| return false unless yield(element) }
     true
   end
 
   def my_any?
-    my_each do |element|
-      return true if yield(element)
-    end
+    my_each { |element| return true if yield(element) }
     false
   end
 end
@@ -37,10 +30,9 @@ end
 # to this method
 class Array
   def my_each
-    array = Array.new(self)
     (0...length).each do |index|
       yield(self[index])
     end
-    array
+    self
   end
 end
