@@ -39,6 +39,11 @@ module Enumerable
     my_each { |element| arr << yield(element) }
     arr
   end
+
+  def my_inject(result)
+    my_each { |element| result = yield(result, element) }
+    result
+  end
 end
 
 # You will first have to define my_each
