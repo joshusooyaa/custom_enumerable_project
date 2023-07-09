@@ -33,6 +33,12 @@ module Enumerable
 
     my_select(&block).length
   end
+
+  def my_map
+    arr = []
+    my_each { |element| arr << yield(element) }
+    arr
+  end
 end
 
 # You will first have to define my_each
