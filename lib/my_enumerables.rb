@@ -27,6 +27,12 @@ module Enumerable
     my_each { |element| return false if yield(element) }
     true
   end
+
+  def my_count(&block)
+    return length unless block_given?
+
+    my_select(&block).length
+  end
 end
 
 # You will first have to define my_each
